@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, ISTPageControlPosition)
 @property (nonatomic, strong) NSArray *loopImages;                          //
 @property (nonatomic, assign) NSTimeInterval loopInterval;                  // default is 2.0f.
 @property (nonatomic, getter=isLoop) BOOL loop;                             // default is NO.
+@property (nonatomic, assign) NSUInteger currentIndex;
 @property (nonatomic, assign) ISTPageControlPosition pageControlPosition;   // default is on the right.
 @property (nonatomic, weak) id<ISTLoopImageViewDelegate>delegate;
 

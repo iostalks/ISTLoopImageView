@@ -26,6 +26,15 @@
 
 @implementation ISTLoopImageView
 
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) { return nil; }
+    [self setupUI];
+    
+    return self;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -67,6 +76,7 @@
   
     _loop = NO;
     _loopInterval = kDefaultDuration;
+    _currentIndex = 0;
     _pageControlPosition = ISTPageControlPositionBottomRight;
     
 }
@@ -178,6 +188,7 @@
     // addjust offset secrectly with no animation
     [_scrollView setContentOffset:CGPointMake(scrollViewWidth, 0) animated:NO];
     
+    _currentIndex = _currentImageView.tag;
     if ([_delegate respondsToSelector:@selector(loopImageView:didShowImageAtIndex:)]) {
         [_delegate loopImageView:self didShowImageAtIndex:_currentImageView.tag];
     }

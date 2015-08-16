@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE0C63B81B801F8D00025144 /* ISTCollectionImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C63B71B801F8D00025144 /* ISTCollectionImageView.m */; };
+		FE0C63BB1B80395C00025144 /* ISTTwoLoopImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C63BA1B80395C00025144 /* ISTTwoLoopImageView.m */; };
 		FECD16E21B79CE5C007DFEDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FECD16E11B79CE5C007DFEDA /* main.m */; };
 		FECD16E51B79CE5C007DFEDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FECD16E41B79CE5C007DFEDA /* AppDelegate.m */; };
 		FECD16E81B79CE5C007DFEDA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FECD16E71B79CE5C007DFEDA /* ViewController.m */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		FE0C63B61B801F8D00025144 /* ISTCollectionImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTCollectionImageView.h; sourceTree = "<group>"; };
 		FE0C63B71B801F8D00025144 /* ISTCollectionImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTCollectionImageView.m; sourceTree = "<group>"; };
+		FE0C63B91B80395C00025144 /* ISTTwoLoopImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTTwoLoopImageView.h; sourceTree = "<group>"; };
+		FE0C63BA1B80395C00025144 /* ISTTwoLoopImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTTwoLoopImageView.m; sourceTree = "<group>"; };
 		FECD16DC1B79CE5C007DFEDA /* ISTLoopImageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISTLoopImageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FECD16E01B79CE5C007DFEDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FECD16E11B79CE5C007DFEDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,16 +90,13 @@
 		FECD16DE1B79CE5C007DFEDA /* ISTLoopImageView */ = {
 			isa = PBXGroup;
 			children = (
+				FEF2D1791B7A020700BD6340 /* ISTLoopImageView */,
 				FEF2D1781B7A020700BD6340 /* ISTCollectionVIew */,
 				FEF2D17A1B7A020700BD6340 /* ISTTwoImageView */,
-				FEF2D1791B7A020700BD6340 /* ISTLoopImageView */,
-				FECD16E31B79CE5C007DFEDA /* AppDelegate.h */,
-				FECD16E41B79CE5C007DFEDA /* AppDelegate.m */,
 				FECD16E61B79CE5C007DFEDA /* ViewController.h */,
 				FECD16E71B79CE5C007DFEDA /* ViewController.m */,
 				FECD16E91B79CE5C007DFEDA /* Main.storyboard */,
 				FECD16EC1B79CE5C007DFEDA /* Images.xcassets */,
-				FECD16EE1B79CE5C007DFEDA /* LaunchScreen.xib */,
 				FECD16DF1B79CE5C007DFEDA /* Supporting Files */,
 			);
 			path = ISTLoopImageView;
@@ -105,6 +105,9 @@
 		FECD16DF1B79CE5C007DFEDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FECD16EE1B79CE5C007DFEDA /* LaunchScreen.xib */,
+				FECD16E31B79CE5C007DFEDA /* AppDelegate.h */,
+				FECD16E41B79CE5C007DFEDA /* AppDelegate.m */,
 				FECD16E01B79CE5C007DFEDA /* Info.plist */,
 				FECD16E11B79CE5C007DFEDA /* main.m */,
 			);
@@ -149,6 +152,8 @@
 		FEF2D17A1B7A020700BD6340 /* ISTTwoImageView */ = {
 			isa = PBXGroup;
 			children = (
+				FE0C63B91B80395C00025144 /* ISTTwoLoopImageView.h */,
+				FE0C63BA1B80395C00025144 /* ISTTwoLoopImageView.m */,
 			);
 			path = ISTTwoImageView;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0C63BB1B80395C00025144 /* ISTTwoLoopImageView.m in Sources */,
 				FECD16E81B79CE5C007DFEDA /* ViewController.m in Sources */,
 				FEF2D17D1B7A022800BD6340 /* ISTLoopImageView.m in Sources */,
 				FECD16E51B79CE5C007DFEDA /* AppDelegate.m in Sources */,

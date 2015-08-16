@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ISTCollectionImageView : UIView
+
+@property (nonatomic, strong) NSArray *collectionImages;
+@property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;  // default is UICollectionViewScrollDirectionHorizontal.
 
 @end
