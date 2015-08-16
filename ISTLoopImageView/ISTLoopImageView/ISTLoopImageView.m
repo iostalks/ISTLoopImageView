@@ -29,20 +29,20 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        [self setupUI];
-        [self createImageView];
-    }
+    if (!self) {  return nil; }
+    [self setupUI];
+    [self createImageView];
+    
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
-        [self setupUI];
-        [self createImageView];
-    }
+    if (!self) {  return nil; }
+    [self setupUI];
+    [self createImageView];
+    
     return self;
 }
 
@@ -100,13 +100,13 @@
     _scrollView.frame = self.bounds;
     _scrollView.contentSize = CGSizeMake(3 * imageViewWidth, imageViewHeith);
     
-    // 启动后调整偏移量，显示中间的ImageView
+    // start to set conten offset only fist time
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self.scrollView setContentOffset:CGPointMake(imageViewWidth, 0)];
     });
     
-    [self updateContent]; // 设置图片
+    [self updateContent]; // update content image
     
 }
 
@@ -144,7 +144,7 @@
 
 - (void)timerActionToNextPage:(NSTimer *)timer
 {
-    // 确保执行前，contentoffsize已经偏移
+    // adjust offset after content has changed
     if (_scrollView.contentOffset.x != 0) {
         [_scrollView setContentOffset:CGPointMake(2 * CGRectGetWidth(self.bounds), 0) animated:YES];
     }
@@ -152,6 +152,13 @@
 
 - (void)updateContent
 {
+    if (_loopImages.count == 0) {
+        return;
+    }else if (_loopImages.count == 1) {
+        _scrollView.scrollEnabled = NO;
+        [self stopLoop];
+    }
+    
     CGFloat scrollViewWidth = CGRectGetWidth(self.bounds);
     if (_scrollView.contentOffset.x > scrollViewWidth) {
         _leftImageView.tag = _currentImageView.tag;
@@ -164,12 +171,16 @@
         
         
     }
-    
     _leftImageView.image = _loopImages[_leftImageView.tag];
     _currentImageView.image = _loopImages[_currentImageView.tag];
     _rightImageView.image = _loopImages[_rightImageView.tag];
     
-    [_scrollView setContentOffset:CGPointMake(scrollViewWidth, 0) animated:NO];  // 迅速调整offset
+    // addjust offset secrectly with no animation
+    [_scrollView setContentOffset:CGPointMake(scrollViewWidth, 0) animated:NO];
+    
+    if ([_delegate respondsToSelector:@selector(loopImageView:didShowImageAtIndex:)]) {
+        [_delegate loopImageView:self didShowImageAtIndex:_currentImageView.tag];
+    }
 }
 
 #pragma mark - scroll view delegate
@@ -184,7 +195,7 @@
     [self updateContent];
 }
 
-// 手滑动时停止定时器
+// stop the timer while scrolling
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if (self.isLoop) {
@@ -201,7 +212,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // 设置UIPageControl的页码
+    // update pageControll page
     if (self.scrollView.contentOffset.x > self.scrollView.bounds.size.width * 1.5) {
         self.pageControl.currentPage = self.rightImageView.tag;
     } else if (self.scrollView.contentOffset.x < self.scrollView.bounds.size.width * 0.5) {
@@ -211,7 +222,7 @@
     }
 }
 
-#pragma mark - Getter And Setter
+#pragma mark - Properties
 
 - (void)setLoopImages:(NSArray *)loopImages
 {
@@ -272,7 +283,6 @@
          [self startLoop];
     }
 }
-
 
 
 @end
